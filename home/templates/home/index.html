@@ -1,0 +1,60 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+</head>
+
+<body>
+    {% include 'menu.html' %}
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Cursos</h1>
+            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+            <a class="btn btn-success" href="">Saiba Mais</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="mt-2">
+            <form action="{% url 'buscar' %}" method="get">
+                <input class="form-control w-25" type="text" name="buscar" id="">
+            </form>
+            {% for mensagem in messages %}
+            <div class="alert {{mensagem.tags}}">
+                {{mensagem}}
+            </div>
+            {% endfor %}
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Titulo</td>
+                    <td>Descrção</td>
+                    <td>Data inicio</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for linhas in dados %}
+                <tr>
+                    <td> <a class="btn btn-primary" href="{% url 'cursos' linhas.id %}">{{linhas.id}}</a>
+                    </td>
+                    <td> {{linhas.titulo}}</td>
+                    <td> {{linhas.descricao}}</td>
+                    <td> {{linhas.datainicio|date:'d/m/Y'}}<br></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

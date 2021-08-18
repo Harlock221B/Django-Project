@@ -1,0 +1,30 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Detalhes Curso</title>
+</head>
+
+<body>
+    {% include 'menu.html' %}
+    <div class="container">
+        <div class="card" style="width: 18rem;">
+            {% if dados.foto %}
+            <img class="img-fluid card-img-top" src="{{dados.foto.url}}" alt="">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{dados.titulo}}</h5>
+                <p class="card-text">{{dados.descricao}}</p>
+                <p>{{dados.datainicio|date:'d/m/Y'}}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
